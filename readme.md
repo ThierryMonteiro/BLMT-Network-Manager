@@ -15,3 +15,5 @@
 Projeto está sendo desenvolvido em Python, e utilizando Debian 12 para a execução.
 
 É necessário estar com o GCC instalado na máquina.
+
+

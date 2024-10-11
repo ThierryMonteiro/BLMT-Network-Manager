@@ -9,5 +9,5 @@ ownInformation.print_table()
 
 # detectHosts pega as informações de hosts na rede
 detectHosts = detectHosts.detectHosts()
-detectHosts.bySubrange("10.1.1.0/24")
+detectHosts.display_by_subnet("10.1.1.0/24")
 

@@ -57,4 +57,8 @@ class managerDevice:
         return ni.gateways()['default'][idxNicGW][0]
 
     def getNICGateway(self):
-        return ni.gateways()['default'][list(ni.gateways()['default'].keys())[0]][1]  # Readable code
+        return ni.gateways()['default'][list(ni.gateways()['default'].keys())[0]][1]
+
+    #TODO Add a method to get the MAC address of the NICs
+
+    #TODO Add a method to get the Subrange in the CIDR notation of each NIC, this will be useful for the ARP Spoofing
