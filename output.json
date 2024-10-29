@@ -1,0 +1,67 @@
+[
+    {
+        "Date": "29/10/2024 02:34",
+        "Devices": [
+            {
+                "IP": "172.23.96.1",
+                "Mac Address": "00:15:5d:16:82:87",
+                "Owner": "Microsoft Corporation"
+            }
+        ]
+    },
+    {
+        "Date": "",
+        "Devices": [
+            {
+                "IP": "172.23.96.1",
+                "Mac Address": "00:15:5d:16:82:87",
+                "Owner": "Microsoft Corporation"
+            },
+            {
+                "IP": "172.23.96.1",
+                "Mac Address": "00:15:5d:16:82:87",
+                "Owner": "Microsoft Corporation"
+            },
+            {
+                "IP": "172.23.96.2",
+                "Mac Address": "00:1A:79:45:BC:10",
+                "Owner": "Apple Inc."
+            },
+            {
+                "IP": "172.23.96.3",
+                "Mac Address": "00:0C:29:3E:4F:21",
+                "Owner": "Dell Inc."
+            }
+        ]
+    },
+    {
+        "Date": "29/10/2024 02:35",
+        "Devices": [
+            {
+                "IP": "172.23.96.1",
+                "Mac Address": "00:15:5d:16:82:87",
+                "Owner": "Microsoft Corporation"
+            }
+        ]
+    },
+    {
+        "Date": "",
+        "Devices": [
+            {
+                "IP": "172.23.96.1",
+                "Mac Address": "00:15:5d:16:82:87",
+                "Owner": "Microsoft Corporation"
+            },
+            {
+                "IP": "172.23.96.2",
+                "Mac Address": "00:1A:79:45:BC:10",
+                "Owner": "Apple Inc."
+            },
+            {
+                "IP": "172.23.96.3",
+                "Mac Address": "00:0C:29:3E:4F:21",
+                "Owner": "Dell Inc."
+            }
+        ]
+    }
+]
