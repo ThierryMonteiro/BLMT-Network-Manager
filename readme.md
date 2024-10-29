@@ -17,3 +17,10 @@ Projeto está sendo desenvolvido em Python, e utilizando Debian 12 para a execu�
 É necessário estar com o GCC instalado na máquina.
 
 
+apt update
+
+apt-get install gcc && python3-dev -y
+
+pip install -r requirements.txt
+
+
