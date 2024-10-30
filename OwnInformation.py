@@ -36,6 +36,12 @@ class managerDevice:
                 interfaces.append(interface[1])
         return interfaces
 
+    def getNetworkRange(self):
+        mask = []
+        for interface in self.interfaces:
+            mask.append(ni.ifaddresses(interface)[ni.AF_INET][0]['netmask'])
+        return mask
+
     def getIP(self):
         ip = []
         for interface in self.interfaces:
