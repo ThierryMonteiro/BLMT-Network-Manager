@@ -1,4 +1,9 @@
-{
-    "Added Devices": [],
-    "Removed Devices": []
-}
+[
+    {
+        "IP": "172.23.96.1",
+        "Mac Address": "00:15:5d:16:82:87",
+        "Owner": "Microsoft Corporation",
+        "Tipo": "Not Router",
+        "Status": "Ativo"
+    }
+]

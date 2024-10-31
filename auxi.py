@@ -2,6 +2,7 @@ import pandas as pd
 import os
 import json
 from datetime import datetime
+from prettytable import PrettyTable
 
 def ouiExtractor(macAdress):
     csvFile = "./oui.csv"
@@ -31,7 +32,7 @@ def saveData(file, data):
     with open(file, "w") as f:
         json.dump(data, f, indent=4)
 
-def detectChanges(devices, newDevices, date):
+def detectChanges(devices, newDevices):
     add = []
     rm = []
     current = {tuple(device.items()) for device in devices}
@@ -40,18 +41,59 @@ def detectChanges(devices, newDevices, date):
         add.append(dict(device))
     for device in current - new:
         rm.append(dict(device))
-    return add, rm
+    return (len(add) != 0 or len(rm) != 0)
 
 def addContent(data, newContent):
+    currentChanges = "./currentChanges.json"
+
+    curr = loadData(currentChanges)
+    
     if data:
-        add, rm = detectChanges(data[-1]["Devices"], newContent["Devices"], newContent["Date"])
-        if add or rm:
-            saveData("./currentChanges.json", {"Added Devices": add, "Removed Devices": rm})
-            data.append(newContent)
-            print("Arquivos adicionados ou removidos. Arquivo de log currentDevices criado.")
-        else:
+        changed = detectChanges(data[-1]["Devices"], newContent["Devices"])
+        if (not changed):
             print("Nenhuma alteração ocorreu na rede")
-            saveData("./currentChanges.json", {"Added Devices": [], "Removed Devices": []})
             data[-1]["Date"] = newContent["Date"]
-    else:
+            return
+        for new in newContent["Devices"]:
+            exist = False
+            for device in curr:
+                if device["IP"] == new["IP"]:
+                    device["Status"] = "Ativo"
+                    exist = True
+                else:
+                    device["Status"] = "Inativo"
+            if not exist:
+                newContent["Status"] = "Ativo"
+                curr.append(newContent)
+        saveData(currentChanges, curr)
         data.append(newContent)
+    else:
+        for new in newContent["Devices"]:
+            new["Status"] = "Ativo"
+            curr.append(new)
+        saveData(currentChanges, curr)
+        data.append(newContent)    
+
+def printLogTable(file):
+    with open(file, "r") as f:
+        log = json.load(f)
+
+    table = PrettyTable()
+    table.field_names = ["IP", "Mac Address", "Owner", "Tipo"]
+    table.clear_rows()
+    for device in log[-1]["Devices"]:
+        table.add_row([device["IP"], device["Mac Address"], device["Owner"], device["Tipo"]])
+    print(f"Log do Período: {log[-1]["Date"]}")
+    print(table)
+
+def printDevicesTable(file):
+    with open(file, "r") as f:
+        devices = json.load(f)
+
+    table = PrettyTable()
+    table.field_names = ["IP", "Mac Address", "Owner", "Tipo", "Status"]
+    table.clear_rows()
+    for device in devices:
+        table.add_row([device["IP"], device["Mac Address"], device["Owner"], device["Tipo"], device["Status"]])
+    print("Dispositivos conhecidos na rede: ")
+    print(table)

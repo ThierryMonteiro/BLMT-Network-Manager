@@ -1,6 +1,6 @@
 import detectHosts
 import OwnInformation
-import aux
+import auxi
 import asyncio
 
 # OwnInformation pega as informações de rede do prórpio host
@@ -24,11 +24,13 @@ async def main():
     print("Informações dos hosts detectados:")
 
     jsonFile = "./output.json"
-    data = aux.loadData(jsonFile)
+    data = auxi.loadData(jsonFile)
     for info in informations_list:
-        aux.addContent(data, info)
-    aux.saveData(jsonFile, data)
+        auxi.addContent(data, info)
+    auxi.saveData(jsonFile, data)
 
+    auxi.printLogTable("./output.json")
+    auxi.printDevicesTable("./currentChanges.json")
 
 
 if __name__ == "__main__":

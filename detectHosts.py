@@ -4,7 +4,7 @@ from scapy.all import ARP, Ether, srp
 import asyncio
 from pysnmp.hlapi.v3arch.asyncio import *
 
-import aux
+import auxi
 from datetime import datetime
 
 
@@ -12,7 +12,7 @@ class detectHosts:
 
     def __init__(self, IP, mask):
         self.table = PrettyTable()
-        self.networkRange = aux.cidr(IP, mask)
+        self.networkRange = auxi.cidr(IP, mask)
         self.display_by_subnet()
 
     def bySubnet(self):
@@ -49,7 +49,7 @@ class detectHosts:
             informations.append({
                 "IP": ip,
                 "Mac Address": mac,
-                "Owner": aux.ouiExtractor(mac),
+                "Owner": auxi.ouiExtractor(mac),
                 "Tipo": router_status,
             })
         toJson = {"Date": date, "Devices": informations}
