@@ -9,7 +9,7 @@ async def main():
 
     ownInformation = OwnInformation.managerDevice()
     ownInformation.print_table()
-    IPs = ownInformation.getIP()
+    IPs = ownInformation.ips
     masks = ownInformation.getNetworkRange()
 
     informations_list = []

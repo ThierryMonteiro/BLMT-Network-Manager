@@ -74,9 +74,9 @@ class managerDevice:
     def getGateway(self):
         temp = ni.gateways()
         idxNicGW = list(temp['default'].keys())[0]
-        for key in temp:
-            if key != 'default' and key != idxNicGW:
-                raise RuntimeError("WARNING: More than one NIC with default gateway")
+        #for key in temp:
+        #    if key != 'default' and key != idxNicGW:
+        #        raise RuntimeError("WARNING: More than one NIC with default gateway")
         return ni.gateways()['default'][idxNicGW][0]
 
     def getNICGateway(self):
