@@ -4,9 +4,9 @@ from prettytable import PrettyTable
 
 class managerDevice:
     def __init__(self):
-        self.interfaces = self.getInterfaces()
-        self.ips = self.getIP()
-        self.IPdict = self.getIPdict()
+        self.ignoredInterfaces = []
+        self.interfaces = self.ips = self.IPdict = None
+        self.getInterfacesAndIps()
         self.gateway = self.getGateway()
         self.table = PrettyTable()
         self.table.field_names = ["Interface", "IP Address", "Netmask", "Broadcast"]
@@ -28,31 +28,48 @@ class managerDevice:
         """Get the formatted table as a string."""
         return str(self.table)
 
-    # List the NICs of the manager device
-    def getInterfaces(self):
-        interfaces = []
-        for interface in socket.if_nameindex():
-            if interface[1] != 'lo':  # Removing loopback interface by hand
-                interfaces.append(interface[1])
-        return interfaces
-
     def getNetworkRange(self):
         mask = []
         for interface in self.interfaces:
             mask.append(ni.ifaddresses(interface)[ni.AF_INET][0]['netmask'])
         return mask
 
-    def getIP(self):
-        ip = []
-        for interface in self.interfaces:
-            ip.append(ni.ifaddresses(interface)[ni.AF_INET][0]['addr'])
-        return ip
-
-    def getIPdict(self):
-        ip_dict = {}
-        for interface in self.interfaces:
-            ip_dict[interface] = ni.ifaddresses(interface)[ni.AF_INET]
-        return ip_dict
+    def getInterfacesAndIps(self) -> None:
+        self.interfaces = []
+        self.ips = []
+        self.IPdict = {}
+        lastException = None
+        # `netifaces` é uma biblioteca maligna que não integra com a API do módulo `sockets`
+        # Não tô com saco pra explicar, mas aqui está a evidência científica:
+        # https://learn.microsoft.com/pt-br/windows-hardware/drivers/network/convertinterfacenametoluidw
+        # https://learn.microsoft.com/pt-br/windows-hardware/drivers/network/convertinterfaceluidtonamew
+        # https://github.com/python/cpython/blob/260843df1bd8a28596b9a377d8266e2547f7eedc/Modules/socketmodule.c#L7017C20-L7017C47
+        # https://learn.microsoft.com/en-us/windows/win32/api/iptypes/ns-iptypes-ip_adapter_addresses_lh
+        # https://learn.microsoft.com/en-us/windows/win32/api/iphlpapi/nf-iphlpapi-getadaptersaddresses
+        # https://lib.rs/crates/get_adapters_addresses
+        # https://github.com/SamuelYvon/netifaces-2/blob/edac9552b5c78ce21d4e0e652ca4502beeed7aa0/src/win.rs#L72
+        # https://github.com/SamuelYvon/netifaces-2/blob/edac9552b5c78ce21d4e0e652ca4502beeed7aa0/src/win.rs#L115
+        # Em resumo: no Windows, precisamos conviver com UUIDs no lugar dos nomes das interfaces.
+        for name in ni.interfaces():
+            try:
+                le_dict = ni.ifaddresses(name)[ni.AF_INET]
+                ip = le_dict[0]['addr']
+            except TypeError:
+                raise
+            except Exception as e:
+                self.ignoredInterfaces.append(name)
+                lastException = e
+            else:
+                self.interfaces.append(name)
+                self.ips.append(ip)
+                self.IPdict[name] = le_dict
+        if len(self.ignoredInterfaces) > 0:
+            print("Ignorando " + str(len(self.ignoredInterfaces)) + " interfaces por não terem IP:")
+            print(", ".join(self.ignoredInterfaces))
+            print("Última exceção: " + str(type(lastException)) + " " + str(lastException))
+        print("Trabalhando com " + str(len(self.interfaces)) + " interfaces")
+        if len(self.interfaces) > 0:
+            print(", ".join(self.interfaces))
 
     def getGateway(self):
         temp = ni.gateways()
