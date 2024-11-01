@@ -18,6 +18,8 @@ class managerDevice:
         # Loop through the data and add each row to the table
         for interface, details in self.IPdict.items():
             for detail in details:
+                if 'broadcast' not in detail:
+                    continue
                 self.table.add_row([interface, detail['addr'], detail['netmask'], detail['broadcast']])
 
     def print_table(self):
@@ -73,6 +75,8 @@ class managerDevice:
 
     def getGateway(self):
         temp = ni.gateways()
+        if 0 == len(temp['default']):
+            return None
         idxNicGW = list(temp['default'].keys())[0]
         #for key in temp:
         #    if key != 'default' and key != idxNicGW:
