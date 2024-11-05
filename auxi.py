@@ -47,10 +47,10 @@ def addContent(data, newContent):
     currentChanges = "./currentChanges.json"
 
     curr = loadData(currentChanges)
-    
+
     if data:
         changed = detectChanges(data[-1]["Devices"], newContent["Devices"])
-        if (not changed):
+        if not changed:
             print("Nenhuma alteração ocorreu na rede")
             data[-1]["Date"] = newContent["Date"]
             return
@@ -61,10 +61,10 @@ def addContent(data, newContent):
                     device["Status"] = "Ativo"
                     exist = True
                 else:
-                    device["Status"] = "Inativo"
+                    device["Status"] = "Ativo"
             if not exist:
-                newContent["Status"] = "Ativo"
-                curr.append(newContent)
+                new["Status"] = "Ativo"
+                curr.append(new)
         saveData(currentChanges, curr)
         data.append(newContent)
     else:
@@ -72,7 +72,7 @@ def addContent(data, newContent):
             new["Status"] = "Ativo"
             curr.append(new)
         saveData(currentChanges, curr)
-        data.append(newContent)    
+        data.append(newContent)
 
 def printLogTable(file):
     with open(file, "r") as f:
@@ -83,17 +83,24 @@ def printLogTable(file):
     table.clear_rows()
     for device in log[-1]["Devices"]:
         table.add_row([device["IP"], device["Mac Address"], device["Owner"], device["Tipo"]])
-    print(f"Log do Período: {log[-1]["Date"]}")
+    print(f"Log do Período: {log[-1]['Date']}")
     print(table)
 
 def printDevicesTable(file):
     with open(file, "r") as f:
         devices = json.load(f)
 
+    print(devices)
     table = PrettyTable()
     table.field_names = ["IP", "Mac Address", "Owner", "Tipo", "Status"]
     table.clear_rows()
     for device in devices:
-        table.add_row([device["IP"], device["Mac Address"], device["Owner"], device["Tipo"], device["Status"]])
+        table.add_row([
+            device.get("IP", "N/A"),
+            device.get("Mac Address", "N/A"),
+            device.get("Owner", "N/A"),
+            device.get("Tipo", "N/A"),
+            device.get("Status", "N/A")
+        ])
     print("Dispositivos conhecidos na rede: ")
     print(table)
