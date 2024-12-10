@@ -1,0 +1,112 @@
+BLMT-Network-Manager DEFINITIONS ::= BEGIN
+
+IMPORTS
+    MODULE-IDENTITY, OBJECT-TYPE, Integer32, IpAddress, TimeTicks, experimental
+    FROM SNMPv2-SMI
+    DisplayString
+    FROM SNMPv2-TC
+    OBJECT-GROUP
+    FROM SNMPv2-CONF
+    InterfaceIndex
+    FROM IF-MIB;
+
+blmtMIB MODULE-IDENTITY
+    LAST-UPDATED "202411060000Z"
+    ORGANIZATION "BLMT"
+    CONTACT-INFO
+        "Support Email: twmonteiro@inf.ufsm.br"
+    DESCRIPTION
+        "MIB para uma ferramenta de autodescoberta de dispositivos."
+    ::= { experimental 2163275 }
+
+infoDiscovery OBJECT IDENTIFIER ::= { blmtMIB 1 }
+
+
+myObjectGroup OBJECT-GROUP
+    OBJECTS { deviceIP, deviceMAC, deviceStatus, deviceCompany, deviceType, lastDiscoveryTime, discoverDevices }
+    STATUS current
+    DESCRIPTION "Grupo de objetos para dispositivos descobertos"
+    ::= { infoDiscovery 2 }
+
+discoverDevices OBJECT-TYPE
+    SYNTAX      InterfaceIndex
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION "Executa a descoberta de rede para a interface"
+    ::= { infoDiscovery 3 }
+
+discoveredDeviceTable OBJECT-TYPE
+    SYNTAX          SEQUENCE OF DiscoveredDeviceEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION     "Tabela de dispositivos descobertos"
+    ::= { infoDiscovery 1 }
+
+discoveredDeviceEntry OBJECT-TYPE
+    SYNTAX          DiscoveredDeviceEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION     "Uma entrada que descreve um dispositivo descoberto"
+    INDEX           { deviceID }
+    ::= { discoveredDeviceTable 1 }
+
+DiscoveredDeviceEntry ::= SEQUENCE {
+    deviceID             Integer32 (0..2147483647),
+    deviceIP             IpAddress,
+    deviceMAC            OCTET STRING (SIZE(6)),
+    deviceStatus         INTEGER { offline(1), online(2) },
+    deviceType           INTEGER { router(1), notRouter(2) },
+    deviceCompany        DisplayString,
+    lastDiscoveryTime    TimeTicks
+}
+
+deviceID OBJECT-TYPE
+    SYNTAX          Integer32 (0..2147483647)
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION     "Identificador unico do dispositivo"
+    ::= { discoveredDeviceEntry 1 }
+
+deviceIP OBJECT-TYPE
+    SYNTAX          IpAddress
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION     "Endereco IP do dispositivo descoberto"
+    ::= { discoveredDeviceEntry 2 }
+
+deviceMAC OBJECT-TYPE
+    SYNTAX          OCTET STRING (SIZE(6))
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION     "Endereco MAC do dispositivo descoberto"
+    ::= { discoveredDeviceEntry 3 }
+
+deviceStatus OBJECT-TYPE
+    SYNTAX          INTEGER { offline(1), online(2), unknown(3) }
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION     "Status atual do dispositivo (offline, online, desconhecido)"
+    ::= { discoveredDeviceEntry 4 }
+
+deviceType OBJECT-TYPE
+    SYNTAX          INTEGER { router(1), notRouter(2) }
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION     "Tipo do dispositivo (router, not router)"
+    ::= { discoveredDeviceEntry 5 }
+
+deviceCompany OBJECT-TYPE
+    SYNTAX          DisplayString
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION     "Nome da empresa ou fabricante do dispositivo"
+    ::= { discoveredDeviceEntry 6 }
+
+lastDiscoveryTime OBJECT-TYPE
+    SYNTAX          TimeTicks
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION     "Tempo da ultima descoberta do dispositivo"
+    ::= { discoveredDeviceEntry 7 }
+
+END
