@@ -256,7 +256,7 @@
         "Mac Address": "ac:41:6a:25:1a:f4",
         "Owner": "Amazon Technologies Inc.",
         "Tipo": "Not Router",
-        "Status": "Ativo"
+        "Status": "Inativo"
     },
     {
         "IP": "192.168.100.31",
@@ -270,21 +270,21 @@
         "Mac Address": "16:26:6c:62:ca:2e",
         "Owner": "UNDEFINED",
         "Tipo": "Not Router",
-        "Status": "Ativo"
+        "Status": "Inativo"
     },
     {
         "IP": "192.168.100.156",
         "Mac Address": "ae:7e:8d:4f:c1:3c",
         "Owner": "UNDEFINED",
         "Tipo": "Not Router",
-        "Status": "Ativo"
+        "Status": "Inativo"
     },
     {
         "IP": "192.168.100.51",
         "Mac Address": "fc:64:3a:35:f1:0a",
         "Owner": "Samsung Electronics Co.,Ltd",
         "Tipo": "Not Router",
-        "Status": "Inativo"
+        "Status": "Ativo"
     },
     {
         "IP": "192.168.100.231",

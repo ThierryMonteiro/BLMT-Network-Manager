@@ -58,7 +58,6 @@ def addContent(data, newContent):
         for device in curr:
             find = False
             for new in newContent["Devices"]:
-                print(f"DEVICE ANTIGO: {device["IP"]} -------- NEW: {new["IP"]}")
                 if device["IP"] == new["IP"]:
                     device["Status"] = "Ativo"
                     find = True
