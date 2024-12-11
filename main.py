@@ -1,3 +1,5 @@
+import json
+import sys
 import threading
 import time
 from socket import socket, socketpair
@@ -59,6 +61,37 @@ def getDevices(le: LexemeExchanger, interface: str) -> [(str, str, str, str, str
 
 # OwnInformation pega as informações de rede do prórpio host
 
+# Deveria ser uma classe, mais vai ser GLOBAL
+epicOwnInformation = None
+epicIPs = None
+epicMasks = None
+
+def epicGetInterfaces():
+    global epicOwnInformation
+    global epicIPs
+    global epicMasks
+    epicOwnInformation = OwnInformation.managerDevice()
+    epicOwnInformation.print_table()
+    epicIPs = epicOwnInformation.ips
+    epicMasks = epicOwnInformation.getNetworkRange()
+epicInformations_list = None
+async def epicGetDevices():
+    global epicInformations_list
+    epicInformations_list = []
+
+    for i in range(len(epicIPs)):
+        if i == 0:
+            detectedHosts = detectHosts.detectHosts(epicIPs[i], epicMasks[i])
+            epicInformations_list.append(await detectedHosts.getInformations())
+
+    print("Informações dos hosts detectados:")
+
+    jsonFile = "./output.json"
+    data = auxi.loadData(jsonFile)
+    for info in epicInformations_list:
+        auxi.addContent(data, info)
+    auxi.saveData(jsonFile, data)
+
 async def main():
 
     ownInformation = OwnInformation.managerDevice()
@@ -88,21 +121,23 @@ async def main():
 um = None
 outro = None
 
+tokensGerente = None
 def gerenciando() -> None:
-    le = LexemeExchanger(um)
-    withIp = next(i for i in getInterfaces(le) if len(i[1]) > 1)
+    tokensGerente = LexemeExchanger(um)
+    withIp = next(i for i in getInterfaces(tokensGerente) if len(i[1]) > 1)
     print(withIp[0])
-    devices = getDevices(le, withIp[0])
+    devices = getDevices(tokensGerente, withIp[0])
     for dev in devices:
         print(dev[0], dev[1], dev[2], dev[3], dev[4])
     time.sleep(2)
     print("after two seconds")
-    devices = getDevices(le, withIp[0])
+    devices = getDevices(tokensGerente, withIp[0])
     for dev in devices:
         print(dev[0], dev[1], dev[2], dev[3], dev[4])
-    le.s.close()
+    tokensGerente.s.close()
 
 def agenciando() -> None:
+    global epicOwnInformation
     le = LexemeExchanger(outro)
     while True:
         match le.nextLexeme():
@@ -113,26 +148,69 @@ def agenciando() -> None:
                         le.nextLexeme()
                     case "discoveredDeviceTable":
                         ensure("R" == le.nextLexeme(), "love is like a fantasy for you and me")
-                        le.s.send(b'1\00010.1.1.7\0003a:8a:10:89:91:12\0UNDEFINED\0Not Router\000Inativo\0')
+                        print("papai")
+                        lala = asyncio.new_event_loop().run_until_complete(epicGetDevices())
+                        print("noel")
+                        #le.s.send(b'1\00010.1.1.7\0003a:8a:10:89:91:12\0UNDEFINED\0Not Router\000Inativo\0')
+                        with open("./currentChanges.json", "r") as f:
+                            devices = json.load(f)
+
+                        le.s.send(str(len(devices)).encode("utf-8"))
+                        le.s.send(b'\0')
+                        for device in devices:
+                            le.s.send(device.get("IP", "N/A").encode("utf-8"))
+                            le.s.send(b'\0')
+                            le.s.send(device.get("Mac Address", "N/A").encode("utf-8"))
+                            le.s.send(b'\0')
+                            le.s.send(device.get("Owner", "N/A").encode("utf-8"))
+                            le.s.send(b'\0')
+                            le.s.send(device.get("Tipo", "N/A").encode("utf-8"))
+                            le.s.send(b'\0')
+                            le.s.send(device.get("Status", "N/A").encode("utf-8"))
+                            le.s.send(b'\0')
                     case _:
                         fail("c'mon raise your hands up")
             case "1.3.6.2.1": # MIB-II
                 match le.nextLexeme():
                     case "ifTable":
                         ensure("R" == le.nextLexeme(), "I want you and you want me")
-                        le.s.send(b'1\0{D64760D3-955B-4B84-A7BB-E7A5EE73C5A0}\000192.168.56.1\000255.255.255.0\000192.168.56.255\0')
+                        print("hello")
+                        epicGetInterfaces()
+                        print("world")
+
+                        print(str(len(epicOwnInformation.IPdict)).encode("utf-8"))
+                        le.s.send(str(len(epicOwnInformation.IPdict)).encode("utf-8"))
+                        le.s.send(b'\0')
+                        print(epicOwnInformation.IPdict)
+                        for interface, details in epicOwnInformation.IPdict.items():
+                            for detail in details:
+                                #if 'broadcast' not in detail:
+                                #    continue
+                                le.s.send(interface.encode("utf-8"))
+                                le.s.send(b'\0')
+                                le.s.send(detail['addr'].encode("utf-8"))
+                                le.s.send(b'\0')
+                                le.s.send(detail['netmask'].encode("utf-8"))
+                                le.s.send(b'\0')
+                                le.s.send(detail['broadcast'].encode("utf-8"))
+                                le.s.send(b'\0')
+                                #self.table.add_row([interface, detail['addr'], detail['netmask'], detail['broadcast']])
+
+                        #le.s.send(b'1\0{D64760D3-955B-4B84-A7BB-E7A5EE73C5A0}\000192.168.56.1\000255.255.255.0\000192.168.56.255\0')
                     case _:
                         fail("let the music take you to the highest high")
                 pass
             case _:
-                fail("you can the sky")
+                fail("you can touch the sky")
 
 if __name__ == "__main__":
-    #asyncio.run(main())
+    if 1 == len(sys.argv):
+        asyncio.run(main())
+        print("oi Flévio")
+    else:
+        (um, outro) = socketpair()
 
-    (um, outro) = socketpair()
-
-    threading.Thread(target=agenciando).start()
-    lala = threading.Thread(target=gerenciando)
-    lala.start()
-    lala.join()
+        threading.Thread(target=agenciando).start()
+        lala = threading.Thread(target=gerenciando)
+        lala.start()
+        lala.join()
