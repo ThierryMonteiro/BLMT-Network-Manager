@@ -7656,5 +7656,489 @@
                 "Tipo": "Not Router"
             }
         ]
+    },
+    {
+        "Date": "10/12/2024 22:17",
+        "Devices": [
+            {
+                "IP": "192.168.100.1",
+                "Mac Address": "cc:20:8c:1d:92:b3",
+                "Owner": "HUAWEI TECHNOLOGIES CO.,LTD",
+                "Tipo": "Not Router",
+                "Status": "Ativo"
+            },
+            {
+                "IP": "192.168.100.6",
+                "Mac Address": "3c:7c:3f:7c:78:2d",
+                "Owner": "ASUSTek COMPUTER INC.",
+                "Tipo": "Not Router",
+                "Status": "Ativo"
+            },
+            {
+                "IP": "192.168.100.7",
+                "Mac Address": "00:d8:61:bd:80:66",
+                "Owner": "Micro-Star INTL CO., LTD.",
+                "Tipo": "Not Router",
+                "Status": "Ativo"
+            },
+            {
+                "IP": "192.168.100.32",
+                "Mac Address": "78:dd:12:4f:5a:58",
+                "Owner": "Arcadyan Corporation",
+                "Tipo": "Not Router",
+                "Status": "Ativo"
+            },
+            {
+                "IP": "192.168.100.102",
+                "Mac Address": "10:68:38:1f:85:1f",
+                "Owner": "AzureWave Technology Inc.",
+                "Tipo": "Not Router",
+                "Status": "Ativo"
+            },
+            {
+                "IP": "192.168.100.120",
+                "Mac Address": "ac:41:6a:25:1a:f4",
+                "Owner": "Amazon Technologies Inc.",
+                "Tipo": "Not Router",
+                "Status": "Ativo"
+            }
+        ]
+    },
+    {
+        "Date": "10/12/2024 22:18",
+        "Devices": [
+            {
+                "IP": "192.168.100.1",
+                "Mac Address": "cc:20:8c:1d:92:b3",
+                "Owner": "HUAWEI TECHNOLOGIES CO.,LTD",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.6",
+                "Mac Address": "3c:7c:3f:7c:78:2d",
+                "Owner": "ASUSTek COMPUTER INC.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.7",
+                "Mac Address": "00:d8:61:bd:80:66",
+                "Owner": "Micro-Star INTL CO., LTD.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.32",
+                "Mac Address": "78:dd:12:4f:5a:58",
+                "Owner": "Arcadyan Corporation",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.31",
+                "Mac Address": "68:83:cb:2f:e6:7b",
+                "Owner": "Apple, Inc.",
+                "Tipo": "Not Router",
+                "Status": "Inativo"
+            },
+            {
+                "IP": "192.168.100.102",
+                "Mac Address": "10:68:38:1f:85:1f",
+                "Owner": "AzureWave Technology Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.120",
+                "Mac Address": "ac:41:6a:25:1a:f4",
+                "Owner": "Amazon Technologies Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.163",
+                "Mac Address": "16:26:6c:62:ca:2e",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router",
+                "Status": "Inativo"
+            },
+            {
+                "IP": "192.168.100.156",
+                "Mac Address": "ae:7e:8d:4f:c1:3c",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router",
+                "Status": "Ativo"
+            }
+        ]
+    },
+    {
+        "Date": "10/12/2024 22:21",
+        "Devices": [
+            {
+                "IP": "192.168.100.1",
+                "Mac Address": "cc:20:8c:1d:92:b3",
+                "Owner": "HUAWEI TECHNOLOGIES CO.,LTD",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.6",
+                "Mac Address": "3c:7c:3f:7c:78:2d",
+                "Owner": "ASUSTek COMPUTER INC.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.7",
+                "Mac Address": "00:d8:61:bd:80:66",
+                "Owner": "Micro-Star INTL CO., LTD.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.32",
+                "Mac Address": "78:dd:12:4f:5a:58",
+                "Owner": "Arcadyan Corporation",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.51",
+                "Mac Address": "fc:64:3a:35:f1:0a",
+                "Owner": "Samsung Electronics Co.,Ltd",
+                "Tipo": "Not Router",
+                "Status": "Inativo"
+            },
+            {
+                "IP": "192.168.100.102",
+                "Mac Address": "10:68:38:1f:85:1f",
+                "Owner": "AzureWave Technology Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.156",
+                "Mac Address": "ae:7e:8d:4f:c1:3c",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.163",
+                "Mac Address": "16:26:6c:62:ca:2e",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.231",
+                "Mac Address": "90:81:58:47:c5:b7",
+                "Owner": "Apple, Inc.",
+                "Tipo": "Not Router",
+                "Status": "Ativo"
+            }
+        ]
+    },
+    {
+        "Date": "10/12/2024 22:22",
+        "Devices": [
+            {
+                "IP": "192.168.100.1",
+                "Mac Address": "cc:20:8c:1d:92:b3",
+                "Owner": "HUAWEI TECHNOLOGIES CO.,LTD",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.6",
+                "Mac Address": "3c:7c:3f:7c:78:2d",
+                "Owner": "ASUSTek COMPUTER INC.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.7",
+                "Mac Address": "00:d8:61:bd:80:66",
+                "Owner": "Micro-Star INTL CO., LTD.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.32",
+                "Mac Address": "78:dd:12:4f:5a:58",
+                "Owner": "Arcadyan Corporation",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.102",
+                "Mac Address": "10:68:38:1f:85:1f",
+                "Owner": "AzureWave Technology Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.120",
+                "Mac Address": "ac:41:6a:25:1a:f4",
+                "Owner": "Amazon Technologies Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.156",
+                "Mac Address": "ae:7e:8d:4f:c1:3c",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.163",
+                "Mac Address": "16:26:6c:62:ca:2e",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.157",
+                "Mac Address": "ca:cd:6b:00:7a:3a",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router",
+                "Status": "Ativo"
+            }
+        ]
+    },
+    {
+        "Date": "10/12/2024 22:35",
+        "Devices": [
+            {
+                "IP": "192.168.100.1",
+                "Mac Address": "cc:20:8c:1d:92:b3",
+                "Owner": "HUAWEI TECHNOLOGIES CO.,LTD",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.6",
+                "Mac Address": "3c:7c:3f:7c:78:2d",
+                "Owner": "ASUSTek COMPUTER INC.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.7",
+                "Mac Address": "00:d8:61:bd:80:66",
+                "Owner": "Micro-Star INTL CO., LTD.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.32",
+                "Mac Address": "78:dd:12:4f:5a:58",
+                "Owner": "Arcadyan Corporation",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.102",
+                "Mac Address": "10:68:38:1f:85:1f",
+                "Owner": "AzureWave Technology Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.120",
+                "Mac Address": "ac:41:6a:25:1a:f4",
+                "Owner": "Amazon Technologies Inc.",
+                "Tipo": "Not Router"
+            }
+        ]
+    },
+    {
+        "Date": "10/12/2024 22:35",
+        "Devices": [
+            {
+                "IP": "192.168.100.1",
+                "Mac Address": "cc:20:8c:1d:92:b3",
+                "Owner": "HUAWEI TECHNOLOGIES CO.,LTD",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.6",
+                "Mac Address": "3c:7c:3f:7c:78:2d",
+                "Owner": "ASUSTek COMPUTER INC.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.7",
+                "Mac Address": "00:d8:61:bd:80:66",
+                "Owner": "Micro-Star INTL CO., LTD.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.32",
+                "Mac Address": "78:dd:12:4f:5a:58",
+                "Owner": "Arcadyan Corporation",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.51",
+                "Mac Address": "fc:64:3a:35:f1:0a",
+                "Owner": "Samsung Electronics Co.,Ltd",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.102",
+                "Mac Address": "10:68:38:1f:85:1f",
+                "Owner": "AzureWave Technology Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.120",
+                "Mac Address": "ac:41:6a:25:1a:f4",
+                "Owner": "Amazon Technologies Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.231",
+                "Mac Address": "90:81:58:47:c5:b7",
+                "Owner": "Apple, Inc.",
+                "Tipo": "Not Router"
+            }
+        ]
+    },
+    {
+        "Date": "10/12/2024 22:36",
+        "Devices": [
+            {
+                "IP": "192.168.100.1",
+                "Mac Address": "cc:20:8c:1d:92:b3",
+                "Owner": "HUAWEI TECHNOLOGIES CO.,LTD",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.6",
+                "Mac Address": "3c:7c:3f:7c:78:2d",
+                "Owner": "ASUSTek COMPUTER INC.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.7",
+                "Mac Address": "00:d8:61:bd:80:66",
+                "Owner": "Micro-Star INTL CO., LTD.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.32",
+                "Mac Address": "78:dd:12:4f:5a:58",
+                "Owner": "Arcadyan Corporation",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.102",
+                "Mac Address": "10:68:38:1f:85:1f",
+                "Owner": "AzureWave Technology Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.120",
+                "Mac Address": "ac:41:6a:25:1a:f4",
+                "Owner": "Amazon Technologies Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.158",
+                "Mac Address": "fa:2c:d2:a9:c0:68",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router",
+                "Status": "Ativo"
+            },
+            {
+                "IP": "192.168.100.157",
+                "Mac Address": "ca:cd:6b:00:7a:3a",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.156",
+                "Mac Address": "ae:7e:8d:4f:c1:3c",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router"
+            }
+        ]
+    },
+    {
+        "Date": "10/12/2024 22:38",
+        "Devices": [
+            {
+                "IP": "192.168.100.1",
+                "Mac Address": "cc:20:8c:1d:92:b3",
+                "Owner": "HUAWEI TECHNOLOGIES CO.,LTD",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.6",
+                "Mac Address": "3c:7c:3f:7c:78:2d",
+                "Owner": "ASUSTek COMPUTER INC.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.7",
+                "Mac Address": "00:d8:61:bd:80:66",
+                "Owner": "Micro-Star INTL CO., LTD.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.32",
+                "Mac Address": "78:dd:12:4f:5a:58",
+                "Owner": "Arcadyan Corporation",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.102",
+                "Mac Address": "10:68:38:1f:85:1f",
+                "Owner": "AzureWave Technology Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.120",
+                "Mac Address": "ac:41:6a:25:1a:f4",
+                "Owner": "Amazon Technologies Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.157",
+                "Mac Address": "ca:cd:6b:00:7a:3a",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router"
+            }
+        ]
+    },
+    {
+        "Date": "10/12/2024 22:41",
+        "Devices": [
+            {
+                "IP": "192.168.100.1",
+                "Mac Address": "cc:20:8c:1d:92:b3",
+                "Owner": "HUAWEI TECHNOLOGIES CO.,LTD",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.6",
+                "Mac Address": "3c:7c:3f:7c:78:2d",
+                "Owner": "ASUSTek COMPUTER INC.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.7",
+                "Mac Address": "00:d8:61:bd:80:66",
+                "Owner": "Micro-Star INTL CO., LTD.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.32",
+                "Mac Address": "78:dd:12:4f:5a:58",
+                "Owner": "Arcadyan Corporation",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.102",
+                "Mac Address": "10:68:38:1f:85:1f",
+                "Owner": "AzureWave Technology Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.156",
+                "Mac Address": "ae:7e:8d:4f:c1:3c",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.120",
+                "Mac Address": "ac:41:6a:25:1a:f4",
+                "Owner": "Amazon Technologies Inc.",
+                "Tipo": "Not Router"
+            },
+            {
+                "IP": "192.168.100.163",
+                "Mac Address": "16:26:6c:62:ca:2e",
+                "Owner": "UNDEFINED",
+                "Tipo": "Not Router"
+            }
+        ]
     }
 ]

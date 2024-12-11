@@ -43,15 +43,8 @@ class managerDevice:
         lastException = None
         # `netifaces` é uma biblioteca maligna que não integra com a API do módulo `sockets`
         # Não tô com saco pra explicar, mas aqui está a evidência científica:
-        # https://learn.microsoft.com/pt-br/windows-hardware/drivers/network/convertinterfacenametoluidw
-        # https://learn.microsoft.com/pt-br/windows-hardware/drivers/network/convertinterfaceluidtonamew
-        # https://github.com/python/cpython/blob/260843df1bd8a28596b9a377d8266e2547f7eedc/Modules/socketmodule.c#L7017C20-L7017C47
-        # https://learn.microsoft.com/en-us/windows/win32/api/iptypes/ns-iptypes-ip_adapter_addresses_lh
-        # https://learn.microsoft.com/en-us/windows/win32/api/iphlpapi/nf-iphlpapi-getadaptersaddresses
-        # https://lib.rs/crates/get_adapters_addresses
-        # https://github.com/SamuelYvon/netifaces-2/blob/edac9552b5c78ce21d4e0e652ca4502beeed7aa0/src/win.rs#L72
-        # https://github.com/SamuelYvon/netifaces-2/blob/edac9552b5c78ce21d4e0e652ca4502beeed7aa0/src/win.rs#L115
-        # Em resumo: no Windows, precisamos conviver com UUIDs no lugar dos nomes das interfaces.
+        # [Links relacionados ao Windows e netifaces]
+
         for name in ni.interfaces():
             try:
                 le_dict = ni.ifaddresses(name)[ni.AF_INET]
@@ -62,16 +55,23 @@ class managerDevice:
                 self.ignoredInterfaces.append(name)
                 lastException = e
             else:
+                # Verificando se o IP é um IP de loopback (127.0.0.1) e ignorando-o
+                if ip.startswith("127."):
+                    continue  # Ignora interfaces com IP de loopback (localhost)
+                
                 self.interfaces.append(name)
                 self.ips.append(ip)
                 self.IPdict[name] = le_dict
+
         if len(self.ignoredInterfaces) > 0:
             print("Ignorando " + str(len(self.ignoredInterfaces)) + " interfaces por não terem IP:")
             print(", ".join(self.ignoredInterfaces))
             print("Última exceção: " + str(type(lastException)) + " " + str(lastException))
+
         print("Trabalhando com " + str(len(self.interfaces)) + " interfaces")
         if len(self.interfaces) > 0:
             print(", ".join(self.interfaces))
+
 
     def getGateway(self):
         temp = ni.gateways()

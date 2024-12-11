@@ -54,17 +54,26 @@ def addContent(data, newContent):
             print("Nenhuma alteração ocorreu na rede")
             data[-1]["Date"] = newContent["Date"]
             return
+
+        for device in curr:
+            find = False
+            for new in newContent["Devices"]:
+                print(f"DEVICE ANTIGO: {device["IP"]} -------- NEW: {new["IP"]}")
+                if device["IP"] == new["IP"]:
+                    device["Status"] = "Ativo"
+                    find = True
+            if not find:
+                device["Status"] = "Inativo"
+
         for new in newContent["Devices"]:
             exist = False
             for device in curr:
                 if device["IP"] == new["IP"]:
-                    device["Status"] = "Ativo"
                     exist = True
-                else:
-                    device["Status"] = "Ativo"
             if not exist:
                 new["Status"] = "Ativo"
                 curr.append(new)
+
         saveData(currentChanges, curr)
         data.append(newContent)
     else:
@@ -90,10 +99,10 @@ def printDevicesTable(file):
     with open(file, "r") as f:
         devices = json.load(f)
 
-    print(devices)
     table = PrettyTable()
     table.field_names = ["IP", "Mac Address", "Owner", "Tipo", "Status"]
     table.clear_rows()
+    
     for device in devices:
         table.add_row([
             device.get("IP", "N/A"),
@@ -102,5 +111,6 @@ def printDevicesTable(file):
             device.get("Tipo", "N/A"),
             device.get("Status", "N/A")
         ])
+    
     print("Dispositivos conhecidos na rede: ")
     print(table)

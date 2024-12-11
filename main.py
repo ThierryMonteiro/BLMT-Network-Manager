@@ -14,7 +14,6 @@ async def main():
 
     informations_list = []
 
-
     for i in range(len(IPs)):
         if i == 0:
             detectedHosts = detectHosts.detectHosts(IPs[i], masks[i])
